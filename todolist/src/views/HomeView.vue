@@ -1,18 +1,38 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+<!-- 编写HTML内容 -->
+<div>
+    <nav-header></nav-header>
+    <nav-main></nav-main>
+    <nav-footer></nav-footer>
+</div>
 </template>
-
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
-export default {
-  name: 'HomeView',
+// 编写JS内容
+import NavHeader from '@/components/navHeader/NavHeader';
+import NavMain from '@/components/navMain/NavMain';
+import NavFooter from '@/components/navFooter/NavFooter';
+import { defineComponent,ref } from 'vue';
+export default defineComponent ({
+  name: 'home', //组件名称
+  props: {
+    //用来接收父组件数据
+  },
   components: {
-    HelloWorld
+    //定义子组件的地方
+    NavHeader,
+    NavMain,
+    NavFooter
+  },
+  setup(props, ctx) {
+  
+    return {
+
+    }
   }
-}
+});
+
 </script>
+
+<style scoped lang='scss'>
+
+</style>
