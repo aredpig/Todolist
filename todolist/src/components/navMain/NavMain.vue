@@ -1,10 +1,11 @@
 <template>
 <!-- 编写HTML内容 -->
 <div v-for="(item, index) in list" :key="index">
-    <div>
+    <div class="item">
         <input type="checkbox" v-model="item.complete">
         {{ item.title }}
-        <button>删除</button>
+        <button class="del" @click="del(item, index)">删除</button>
+        
     </div>
 </div>
 
@@ -16,6 +17,10 @@ import { defineComponent, ref } from 'vue';
 export default defineComponent ({
   name: 'navMain', //组件名称
   setup() {
+    let del = (item, index) => {
+        console.log(item);
+        console.log(index);
+    }
     let list = ref([
         {
             title:'吃饭',
@@ -31,13 +36,37 @@ export default defineComponent ({
         }
     ])
     return {
-        list
+        list,
+        del
     }
   }
-});
+})
 
 </script>
 
 <style scoped lang='scss'>
+.item {
+    height:35px;
+    line-height:35px;
+    position: relative;
+    width: 160px;
+    cursor: pointer;
+    button {
+        position: absolute;
+        right: 20px;
+        top: 6px;
+        display: none;
+        z-index: 99;
+
+    }
+    &:hover {
+        background:#ddd;
+        button {
+            
+            display: block;
+        }
+    }
+
+}
 
 </style>

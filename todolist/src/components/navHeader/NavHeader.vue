@@ -23,10 +23,12 @@ export default defineComponent ({
         enter
     }
     }
-});
+})
 
 </script>
 
 <style scoped lang='scss'>
-
+input{
+    margin-bottom: 10px;
+}
 </style>
