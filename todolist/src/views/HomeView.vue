@@ -4,6 +4,7 @@
     <nav-header></nav-header>
     <nav-main></nav-main>
     <nav-footer></nav-footer>
+    <div>{{ list }}</div>
 </div>
 </template>
 <script>
@@ -11,7 +12,9 @@
 import NavHeader from '@/components/navHeader/NavHeader';
 import NavMain from '@/components/navMain/NavMain';
 import NavFooter from '@/components/navFooter/NavFooter';
-import { defineComponent,ref } from 'vue';
+import { defineComponent,ref, computed} from 'vue';
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
 export default defineComponent ({
   name: 'home', //组件名称
   props: {
@@ -24,9 +27,12 @@ export default defineComponent ({
     NavFooter
   },
   setup(props, ctx) {
-  
+    let store = useStore()
+    let list = computed( () => {
+      return store.state.list
+    })
     return {
-
+      list
     }
   }
 })
