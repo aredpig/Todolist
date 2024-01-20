@@ -6,7 +6,7 @@ export default createStore({
     list: [
     {
         title:'吃饭',
-        complete:'true',
+        complete:'false',
     },
     {
         title:'睡觉',

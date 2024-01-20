@@ -1,10 +1,9 @@
 <template>
 <!-- 编写HTML内容 -->
 <div>
-    <nav-header></nav-header>
-    <nav-main></nav-main>
-    <nav-footer></nav-footer>
-    <div>{{ list }}</div>
+    <nav-header @task="add"></nav-header>
+    <nav-main :list="list" @del="del"></nav-main>
+    <nav-footer :list="list" @clear="clear"></nav-footer>
 </div>
 </template>
 <script>
@@ -28,11 +27,40 @@ export default defineComponent ({
   },
   setup(props, ctx) {
     let store = useStore()
+    let value = ref('')
+    let add = (val) => {
+      value.value = val
+      let flag = true
+      list.value.map((item) => {
+        if (item.title === value.value) {
+          flag = false
+          alert('任务已存在')
+        }
+      })
+      if (flag) {
+        store.commit('addTodo', {
+        title: value.value,
+        complete: false
+      })
+      }
+      
+    }
+    let del = (val) => {
+      store.commit('delTodo', val)
+    }
+    let clear = (val) => {
+      console.log(val)
+      store.commit('clear', val)
+    }
     let list = computed( () => {
+      
       return store.state.list
     })
     return {
-      list
+      list,
+      add,
+      del,
+      clear
     }
   }
 })
