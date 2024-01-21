@@ -6,15 +6,15 @@ export default createStore({
     list: [
     {
         title:'吃饭',
-        complete:'false',
+        complete:false,
     },
     {
         title:'睡觉',
-        complete:'false',
+        complete:false,
     },
     {
         title:'敲代码',
-        complete:'false',
+        complete:false,
     }]
   },
   // 
